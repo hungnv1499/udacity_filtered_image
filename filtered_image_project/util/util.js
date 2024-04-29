@@ -14,8 +14,8 @@ import Jimp from "jimp";
   return new Promise(async (resolve, reject) => {
     try {
       // fix bug Jimp cannot read data
-      const buffer = await axios.get(inputURL, { responseType: "arraybuffer" });
-			const photo = await Jimp.read(Buffer.from(buffer?.data, "binary"));
+      const image_buffer = await axios.get(inputURL, { responseType: "arraybuffer" });
+			const photo = await Jimp.read(Buffer.from(image_buffer?.data, "binary"));
 
       const outpath =
         "/tmp/filtered." + Math.floor(Math.random() * 2000) + ".jpg";
